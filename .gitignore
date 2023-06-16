@@ -1,0 +1,33 @@
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
+
+# ログとキャッシュ
+/storage/*.key
+/storage/*.pem
+/storage/app/*.log
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/storage/logs/*
+
+# Ignore logs directory
+/docker/nginx/logs/
+
+# Ignore mysql directory
+/docker/mysql/
