@@ -1,22 +1,22 @@
 version: '3'
 services:
-  l9vitedev-nginx:
-    container_name: "l9vitedev-nginx"
+  web-nginx:
+    container_name: "web-nginx"
     build:
       context: ./docker/nginx
     depends_on:
-      - l9vitedev-app
+      - app-php
     ports:
       - 3000:80
     volumes:
       - ./:/src
 
-  l9vitedev-app:
-    container_name: "l9vitedev-app"
+  app-php:
+    container_name: "app-php"
     build:
       context: ./docker/php
     depends_on:
-      - l9vitedev-mysql
+      - db-mysql
     ports:
       - 5173:5173
     volumes:
@@ -25,21 +25,21 @@ services:
       - /src/vendor
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini
 
-  l9vitedev-mysql:
+  db-mysql:
     image: mysql:8.0.28
     command: --max_allowed_packet=32505856
     platform: linux/amd64
-    container_name: "l9vitedev-mysql"
+    container_name: "db-mysql"
     volumes:
       - ./docker/mysql:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=l9vitedev
+      - MYSQL_DATABASE=assign-manager
     ports:
       - 3306:3306
 
-  l9vitedev-redis:
+  redis:
     image: redis:alpine
-    container_name: "l9vitedev-redis"
+    container_name: "redis"
     ports:
       - 16379:6379
