@@ -1,4 +1,10 @@
 version: '3'
+
+# 永続化
+volumes:
+  node_modules_data:
+  vendor_data:
+
 services:
   web-nginx:
     container_name: "web-nginx"
@@ -7,7 +13,7 @@ services:
     depends_on:
       - app-php
     ports:
-      - 3000:80
+      - 80:80
     volumes:
       - ./:/src
 
@@ -20,9 +26,16 @@ services:
     ports:
       - 5173:5173
     volumes:
-      - ./:/src
-      - /src/node_modules
-      - /src/vendor
+      - type: bind
+        source: ./
+        target: /src
+    #*# node_modulesとvendorはbindマウントから外す #*#
+      - type: volume
+        source: node_modules_data
+        target: /src/node_modules
+      - type: volume
+        source: vendor_data
+        target: /src/vendor
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini
 
   db-mysql:
@@ -34,7 +47,7 @@ services:
       - ./docker/mysql:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=assign-manager
+      - MYSQL_DATABASE=assign_manager
     ports:
       - 3306:3306
 
