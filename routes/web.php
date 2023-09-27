@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WorkersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +19,8 @@ Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('adminlte', function () {
-    return view('adminlte');
-});
+Route::get('/workers', [WorkersController::class, 'index'])->name('workers.index');
+Route::get('/workers/create', [WorkersController::class, 'create'])->name('workers.create');
+Route::get('/workers/{id}/edit', [WorkersController::class, 'edit'])->name('workers.edit');
 
 require __DIR__.'/auth.php';
