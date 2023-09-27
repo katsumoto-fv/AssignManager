@@ -309,13 +309,15 @@ return [
         ],
         [
             'text'        => '案件管理',
-            'url'         => 'works',
+            'url'         => 'jobs',
             'icon'        => 'far fa-fw fa-file',
+            'active' => ['jobs/*'],
         ],
         [
             'text'        => '人員管理',
-            'url'         => 'staff',
+            'url'         => 'workers',
             'icon'        => 'far fa-fw fa-file',
+            'active' => ['workers/*'],
         ],
         ['header' => 'account_settings'],
         [
