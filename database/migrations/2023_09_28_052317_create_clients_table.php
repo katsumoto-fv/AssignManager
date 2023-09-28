@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mst_positions', function (Blueprint $table) {
+        Schema::create('mst_clients', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->datetime('created_at')->useCurrent()->nullable();
 			$table->datetime('updated_at')->useCurrent()->nullable();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mst_positions');
+        Schema::dropIfExists('clients');
     }
 };
