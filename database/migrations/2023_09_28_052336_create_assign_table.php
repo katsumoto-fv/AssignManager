@@ -13,9 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mst_positions', function (Blueprint $table) {
+        Schema::create('tbl_assign', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
-            $table->string('name');
+            $table->unsignedBigInteger('worker_id');
+            $table->foreign('worker_id')->references('id')->on('tbl_workers')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->unsignedBigInteger('job_id');
+            $table->foreign('job_id')->references('id')->on('tbl_jobs')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->integer('year');
+            $table->integer('month');
+            $table->decimal('man_hours', 3, 2);
             $table->datetime('created_at')->useCurrent()->nullable();
 			$table->datetime('updated_at')->useCurrent()->nullable();
         });
@@ -28,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mst_positions');
+        Schema::dropIfExists('assign');
     }
 };

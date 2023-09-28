@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('mst_divisions', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary();;
-            $table->string('name');
+            $table->unsignedBigInteger('id')->primary();
+            $table->string('name')->unique();
             $table->datetime('created_at')->useCurrent()->nullable();
 			$table->datetime('updated_at')->useCurrent()->nullable();
         });
