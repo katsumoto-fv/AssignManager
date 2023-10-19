@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('mst_positions', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary();
+            $table->id();
             $table->string('name');
             $table->datetime('created_at')->useCurrent()->nullable();
 			$table->datetime('updated_at')->useCurrent()->nullable();

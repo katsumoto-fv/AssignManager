@@ -25,7 +25,7 @@
                 @foreach ( $workers as $worker)
                 <tr>
                     <td>{{ $worker->name }}</td>
-                    <td>johndoe@example.com</td>
+                    <td>{{ $worker->division_id }}</td>
                     <td>
                     <a href="#" class="btn btn-primary btn-sm">編集</a>
                     <a href="#" class="btn btn-danger btn-sm">削除</a>

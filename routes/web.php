@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorkersController;
+use App\Http\Controllers\DivisionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +20,16 @@ Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/workers', [WorkersController::class, 'index'])->name('workers.index');
-Route::get('/workers/create', [WorkersController::class, 'create'])->name('workers.create');
-Route::get('/workers/{id}/edit', [WorkersController::class, 'edit'])->name('workers.edit');
+Route::get('divisions', [DivisionsController::class, 'index'])->name('divisions.index');
+Route::get('divisions/create', [DivisionsController::class, 'create'])->name('divisions.create');
+Route::post('divisions', [DivisionsController::class, 'store'])->name('divisions.store');
+Route::get('divisions/{id}/edit', [DivisionsController::class, 'edit'])->name('divisions.edit');
+Route::put('divisions/{id}', [DivisionsController::class, 'update'])->name('divisions.update');
+Route::post('divisions/{id}', [DivisionsController::class, 'destroy'])->name('divisions.destroy');
+
+//リソース指定
+Route::resources([
+    'workers' => WorkersController::class,
+], ['except' => 'show']);
 
 require __DIR__.'/auth.php';

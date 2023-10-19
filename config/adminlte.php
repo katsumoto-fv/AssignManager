@@ -107,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'AdminLTE Preloader Image',
@@ -312,6 +312,12 @@ return [
             'url'         => 'jobs',
             'icon'        => 'far fa-fw fa-file',
             'active' => ['jobs/*'],
+        ],
+        [
+            'text'        => '部署管理',
+            'url'         => 'divisions',
+            'icon'        => 'far fa-fw fa-file',
+            'active' => ['divisions/*'],
         ],
         [
             'text'        => '人員管理',

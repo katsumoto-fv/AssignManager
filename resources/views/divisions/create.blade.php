@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', '要員登録')
+@section('title', '部署登録')
 
 @section('content_header')
-    <h1>要員登録</h1>
+    <h1>部署登録</h1>
 @stop
 
 @section('content')
@@ -20,24 +20,17 @@
 
     {{-- 登録画面 --}}
     <div class="card">
-        <form action="{{ route('workers.store') }}" method="post">
+        <form action="{{ route('divisions.store') }}" method="post">
             @csrf
             <div class="card-body">
                 <div class="form-group">
-                    <label for="name">氏名（スペースなし）</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="田中太郎" />
-                </div>
-                <div class="form-group">
-                    <label for="price">所属部署</label>
-                    <select class="form-control" id="price" name="price">
-                        <option>選択してください</option>
-                        <option value="1" {{ old('price') == 1 ? 'selected' : '' }}>システム開発部</option>
-                    </select>
+                    <label for="name">部署名</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="システム開発部" />
                 </div>
             </div>
             <div class="card-footer">
                 <div class="row">
-                    <a class="btn btn-default" href="{{ route('workers.index') }}" role="button">戻る</a>
+                    <a class="btn btn-default" href="{{ route('divisions.index') }}" role="button">戻る</a>
                     <div class="ml-auto">
                         <button type="submit" class="btn btn-primary">登録</button>
                     </div>

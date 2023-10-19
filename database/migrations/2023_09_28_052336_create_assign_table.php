@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbl_assign', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary();
+            $table->id();
             $table->unsignedBigInteger('worker_id');
             $table->foreign('worker_id')->references('id')->on('tbl_workers')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->unsignedBigInteger('job_id');

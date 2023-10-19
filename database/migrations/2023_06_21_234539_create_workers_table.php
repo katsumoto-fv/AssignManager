@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbl_workers', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary();
+            $table->id();
             $table->string('name');
             $table->unsignedBigInteger('division_id');
             $table->foreign('division_id')->references('id')->on('mst_divisions')->onUpdate('CASCADE')->onDelete('CASCADE');
